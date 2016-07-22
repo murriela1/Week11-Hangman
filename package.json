@@ -1,0 +1,23 @@
+{
+  "name": "week11-hangman",
+  "version": "1.0.0",
+  "description": "hangman game",
+  "main": "main.js",
+  "dependencies": {
+    "inquirer": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murriela1/week11-hangman.git"
+  },
+  "author": "Andrew Murriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/murriela1/week11-hangman/issues"
+  },
+  "homepage": "https://github.com/murriela1/week11-hangman#readme"
+}
