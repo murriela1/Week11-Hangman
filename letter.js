@@ -8,7 +8,7 @@
 // containing the string htis letter object refers to
 // create a method called display() to show "_" or character
 //// depending upon guessedCorrectly
-function Letter(character) {
+function Letter(char) {
     this.guessedCorrectly = false;
     this.character = char;
 }
