@@ -2,17 +2,17 @@
 // should contain all of the methods which will check the letters
 // guessed versus the random word selected.
 var Letter = require('./letter');
-​
+
 // create a Word Constructor -> new Word("apple") 
 function Word(wrd) {
     // properties gameWord[String]
     // properties letters[Array] to contain char "a", "p",
     this.gameWord = wrd;
-    this.letter = [];
+    this.letters = [];
     // a guessedLetters array of strings
-    this.guessedLetter = [];
+    this.guessedLetters = [];
 }
-​
+
 // create a method convertString()
 // turn the parameter into an array of LETTERS(letter objects of
 // the letter class NOT JUST STRINGS)
@@ -25,7 +25,7 @@ Word.prototype.convertString = function() {
         // create Letters from broken string
         var letterObj = new Letter(brokenElement);
         // push letter objects to this.letters
-        this.letter.push(letterObj);
+        this.letters.push(letterObj);
     }, this);
     // ***********using basic iterator****
     // for (var i = 0; i < brokenWordArray.length; i++) {
@@ -43,13 +43,14 @@ Word.prototype.checkLetter = function(usrGuess) {
     // prevent user from guessing twice
     // if usrGuess in guessedArray then somehow stop function
     // and console log ('u guessed that already');
-    if (this.guessedLetter.indexOf(usrGuess) > -1) {
+
+    if (this.guessedLetters.indexOf(usrGuess) > -1) {
         console.log('you guessed that letter already');
         return;
     }
-    for (var i = 0; i < this.letter.length; i++) {
+    for (var i = 0; i < this.letters.length; i++) {
         // grab the current lettr
-        var currLet = this.letter[i];
+        var currLet = this.letters[i];
         // check if they have the same character
         if (currLet.character === usrGuess) {
             // change ALL OF THE correct letters guessedCorrectly attribute to true
@@ -58,15 +59,15 @@ Word.prototype.checkLetter = function(usrGuess) {
         }
     }
     // change guessedLetters, to include usrGuess
-    this.guessedLetter.push(usrGuess);
+    this.guessedLetters.push(usrGuess);
 }
 Word.prototype.charArray = function() {
     // we need to iterate over the letters ARRAY WHICH CONTAINS
     // LETTER OBJECTS and grab all the characters WHICH ARE STRINGS
     var allChars = [];
-    for (var i = 0; i < this.letter.length; i++) {
+    for (var i = 0; i < this.letters.length; i++) {
         // grab currentCharacter
-        var currChar = this.letter[i].character;
+        var currChar = this.letters[i].character;
         // push into allChars
         allChars.push(currChar);
     }
@@ -86,25 +87,25 @@ Word.prototype.displayWord = function() {
     // console.log()
     // display letters array
     // create a variable for the displayed letters shownLetter [];
-    var shownLetter = [];
+    var shownLetters = [];
     // iterate over array and show each letter
-    for (var i = 0; i < this.letter.length; i++) {
+    for (var i = 0; i < this.letters.length; i++) {
         // grab the current letter
-        var currLetter = this.letter[i];
+        var currLetter = this.letters[i];
         // call display on current letts
         // push to shownLetters
-        shownLetter.push(currLetter.display());
+        shownLetters.push(currLetter.display());
     }
     // return letters array?
     // 
-    return shownLetter;
+    return shownLetters;
 };
 // 
 // Word.prototype.checkLetter = function(usrGuess) {
 // prevent user from guessing twice
 // if usrGuess in guessedArray then somehow stop function
 // and console log ('u guessed that already');
-if (this.guessedLetter.indexOf(usrGuess) > -1) {
+if (this.guessedLetters.indexOf(usrGuess) > -1) {
     console.log('you already guessed that letter');
     return;
 }
@@ -143,5 +144,3 @@ if (this.guessedLetter.indexOf(usrGuess) > -1) {
 // 
 // 
 module.exports = Word;
-// 
-//
